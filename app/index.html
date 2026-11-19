@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio — make your own GTA-style cover art</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VC</span>
+    <div>
+      <h1>Vice Cover Studio</h1>
+      <p>Turn your photos into sunset-soaked cover art. Everything runs on your machine — no uploads, no account.</p>
+    </div>
+  </div>
+  <p class="topbar-note">4 layouts · 4 colour grades · 3 post sizes</p>
+</header>
+
+<main class="workspace">
+  <aside class="panel" aria-label="Cover controls">
+    <section class="group">
+      <h2>1 · Photos</h2>
+      <label class="file-btn">Add photos from your machine
+        <input id="photoFiles" type="file" accept="image/*" multiple>
+      </label>
+      <div class="row">
+        <button id="samplePier" type="button" class="chip">Sample: pier</button>
+        <button id="sampleBoulevard" type="button" class="chip">Sample: boulevard</button>
+      </div>
+      <div class="slots" id="slots" role="group" aria-label="Photo slots"></div>
+      <label class="slider-label">Zoom the selected photo
+        <input id="zoom" type="range" min="100" max="300" value="100">
+      </label>
+      <p class="hint">Tip: drag on a panel to move its photo, scroll over it to zoom, click a panel to pick it.</p>
+    </section>
+
+    <section class="group">
+      <h2>2 · Layout</h2>
+      <div class="layout-grid" id="layouts"></div>
+    </section>
+
+    <section class="group">
+      <h2>3 · Colour grade</h2>
+      <div class="grade-grid" id="grades"></div>
+    </section>
+
+    <section class="group">
+      <h2>4 · Caption</h2>
+      <label>Headline
+        <input id="caption" type="text" maxlength="48" value="VICE HEIST">
+      </label>
+      <label>Tagline
+        <input id="tagline" type="text" maxlength="64" value="Leonida, after dark">
+      </label>
+      <label class="slider-label">Headline size
+        <input id="captionSize" type="range" min="60" max="160" value="100">
+      </label>
+      <div class="row">
+        <label>Position
+          <select id="captionPos">
+            <option value="bottom" selected>Bottom</option>
+            <option value="top">Top</option>
+            <option value="center">Center</option>
+          </select>
+        </label>
+        <label>Letters
+          <select id="captionColor">
+            <option value="white" selected>White</option>
+            <option value="neon">Neon pink</option>
+            <option value="gold">Gold</option>
+            <option value="black">Black</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>5 · Export</h2>
+      <div class="row">
+        <label>Post size
+          <select id="exportSize">
+            <option value="1080x1080">Square · 1080 × 1080</option>
+            <option value="1080x1350">Portrait · 1080 × 1350</option>
+            <option value="1920x1080" selected>Wide · 1920 × 1080</option>
+          </select>
+        </label>
+      </div>
+      <button id="exportPng" type="button" class="export-btn">Export PNG</button>
+      <p id="status" role="status"></p>
+    </section>
+  </aside>
+
+  <section class="stage-wrap" aria-label="Cover preview">
+    <div class="stage-frame">
+      <canvas id="stage" width="960" height="540"></canvas>
+    </div>
+    <p class="stage-hint">Live preview — what you see is what the PNG holds.</p>
+  </section>
+</main>
+
+<footer class="footnote">
+  <p>Photos never leave your browser. Sample photos were made with an image model for this app and are free to use. This is an original fan-made cover tool, not affiliated with Rockstar Games.</p>
+</footer>
+
+<script type="module" src="./src/app.js"></script>
+</body>
+</html>
